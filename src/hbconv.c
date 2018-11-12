@@ -2,6 +2,6 @@
 
 int main ( int argc, char const *argv[] )
 {
-	puts("okay, it works");
+	if ( 2 != argc ) return -1; 
 	return 0;
 }

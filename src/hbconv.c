@@ -3,6 +3,7 @@
 
 #define ARG_COUNT 2
 #define HEX_SYMB_BUFFER "0123456789ABCDEFabcdef"
+#define BLOCK_SIZE 6
 
 int main ( int argc, char const *argv[] )
 {

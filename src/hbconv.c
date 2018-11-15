@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 
 #define ARG_COUNT 2
 

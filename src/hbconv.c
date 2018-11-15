@@ -23,6 +23,8 @@ int main ( int argc, char const *argv[] )
 		}
 	}
 
+	input_buffer = malloc( ( sizeof(char) * char_count ) + ( char_count % 2 ) );
+
 	block_count = char_count / BLOCK_SIZE;
 	if ( 0 != ( char_count % BLOCK_SIZE ) )
 	{

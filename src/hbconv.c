@@ -9,6 +9,8 @@
 int main ( int argc, char const *argv[] )
 {
 	size_t char_counter, char_count, block_count;
+	char block[ BLOCK_SIZE + 1 ];
+
 	if ( ARG_COUNT != argc ) return -1;
 
 	char_count = strlen(argv[1]);

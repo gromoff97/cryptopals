@@ -12,7 +12,10 @@ int main ( int argc, char const *argv[] )
 	char_count = strlen(argv[1]);
 	for ( char_counter = 0 ; char_counter < char_count; char_counter++ )
 	{
-		/* fprintf(stdout, "%c\n", argv[1][char_counter]); */
+		if ( NULL == strchr( HEX_SYMB_BUFFER, argv[1][char_counter] ) ) 
+		{
+			return -1;
+		}
 	}
 
 	return 0;

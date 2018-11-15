@@ -9,7 +9,7 @@
 int main ( int argc, char const *argv[] )
 {
 	size_t char_counter, char_count, block_count, block_counter;
-	char block[ BLOCK_SIZE + 1 ] = {0};
+	char hex_block[ BLOCK_SIZE + 1 ] = {0};
 	char bin_block[ ( BLOCK_SIZE * 4 ) + 1] = {0};
 	char* input_buffer;
 
@@ -41,7 +41,7 @@ int main ( int argc, char const *argv[] )
 	/* from first block to n-1 block */
 	for ( block_counter = 0; block_counter < block_count - 1; block_counter++ )
 	{
-		strncpy( block, input_buffer + ( block_counter * BLOCK_SIZE ), BLOCK_SIZE );
+		strncpy( hex_block, input_buffer + ( block_counter * BLOCK_SIZE ), BLOCK_SIZE );
 	}
 
 	free( input_buffer );

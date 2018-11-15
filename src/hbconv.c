@@ -10,6 +10,7 @@ int main ( int argc, char const *argv[] )
 {
 	size_t char_counter, char_count, block_count, block_counter;
 	char block[ BLOCK_SIZE + 1 ];
+	char* input_buffer;
 
 	if ( ARG_COUNT != argc ) return -1;
 

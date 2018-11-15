@@ -20,5 +20,11 @@ int main ( int argc, char const *argv[] )
 		}
 	}
 
+	block_count = char_count / BLOCK_SIZE;
+	if ( 0 != ( char_count % BLOCK_SIZE ) )
+	{
+		block_count++;
+	}
+
 	return 0;
 }

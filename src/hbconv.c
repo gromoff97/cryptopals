@@ -97,6 +97,11 @@ int main ( int argc, char const *argv[] )
 	memset(bin_block, 0, sizeof(char) * BIN_BLOCK_SIZE);
 	strncpy( hex_block, input_buffer + hex_block_counter * HEX_BLOCK_SIZE , char_count % HEX_BLOCK_SIZE );
 
+	if ( 0 != strlen(hex_block) )
+	{
+
+	}
+
 	free( input_buffer );
 	return 0;
 }

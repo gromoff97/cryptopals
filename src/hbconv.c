@@ -43,6 +43,10 @@ int main ( int argc, char const *argv[] )
 	for ( hex_block_counter = 0; hex_block_counter < hex_block_count - 1; hex_block_counter++ )
 	{
 		strncpy( hex_block, input_buffer + ( hex_block_counter * HEX_BLOCK_SIZE ), HEX_BLOCK_SIZE );
+		for ( hex_counter = 0; hex_counter < HEX_BLOCK_SIZE; hex_counter++ )
+		{
+			/*code*/
+		}
 	}
 
 	free( input_buffer );

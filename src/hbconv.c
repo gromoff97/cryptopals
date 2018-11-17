@@ -6,16 +6,16 @@
 #define HEX_SYMB_BUFFER "0123456789ABCDEFabcdef"
 #define BASE64_SYMB_BUFFER "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
 #define HEX_BLOCK_SIZE 6
-#define OCT_BLOCK_SIZE 6
+#define SIX_BLOCK_SIZE 6
 #define HEX_SIZE 4
 #define BIN_BLOCK_SIZE ( HEX_BLOCK_SIZE * HEX_SIZE )
 
 int main ( int argc, char const *argv[] )
 {
-	size_t char_counter, char_count, hex_block_count, hex_block_counter, hex_counter, oct_counter;
+	size_t char_counter, char_count, hex_block_count, hex_block_counter, hex_counter, six_counter;
 	char hex_block[ HEX_BLOCK_SIZE + 1 ] = {0};
 	char bin_block[ BIN_BLOCK_SIZE + 1] = {0};
-	char oct_block[ OCT_BLOCK_SIZE + 1 ] = {0};
+	char six_block[ SIX_BLOCK_SIZE + 1 ] = {0};
 	char* input_buffer;
 
 	if ( ARG_COUNT != argc ) return -1;
@@ -77,9 +77,9 @@ int main ( int argc, char const *argv[] )
 			}
 		}
 
-		for ( oct_counter = 0; oct_counter < BIN_BLOCK_SIZE; oct_counter = oct_counter + OCT_BLOCK_SIZE )
+		for ( six_counter = 0; six_counter < BIN_BLOCK_SIZE; six_counter = six_counter + SIX_BLOCK_SIZE )
 		{
-			strncpy( oct_block ,bin_block + oct_counter, OCT_BLOCK_SIZE );
+			strncpy( six_block, bin_block + six_counter, SIX_BLOCK_SIZE );
 		}
 	}
 

@@ -46,7 +46,7 @@ int main ( int argc, char const *argv[] )
 
 	if ( hex_block_count > 1 || ( 1 == hex_block_count && 0 == ( char_count % HEX_BLOCK_SIZE ) ) )
 	{
-		if (hex_block_count > 1)
+		if ( hex_block_count > 1 && 0 != ( char_count % HEX_BLOCK_SIZE ) )
 		{
 			hex_block_count--;
 		}

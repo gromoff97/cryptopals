@@ -5,12 +5,13 @@
 #define ARG_COUNT 2
 #define HEX_SYMB_BUFFER "0123456789ABCDEFabcdef"
 #define HEX_BLOCK_SIZE 6
+#define BIN_BLOCK_SIZE ( HEX_BLOCK_SIZE * 4 )
 
 int main ( int argc, char const *argv[] )
 {
 	size_t char_counter, char_count, hex_block_count, hex_block_counter;
 	char hex_block[ HEX_BLOCK_SIZE + 1 ] = {0};
-	char bin_block[ ( HEX_BLOCK_SIZE * 4 ) + 1] = {0};
+	char bin_block[ BIN_BLOCK_SIZE + 1] = {0};
 	char* input_buffer;
 
 	if ( ARG_COUNT != argc ) return -1;

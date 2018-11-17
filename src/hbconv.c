@@ -149,6 +149,7 @@ int main ( int argc, char const *argv[] )
 				}
 			}
 	}
+	puts("");
 
 	free( input_buffer );
 	return 0;

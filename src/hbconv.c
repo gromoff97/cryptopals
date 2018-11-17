@@ -5,7 +5,8 @@
 #define ARG_COUNT 2
 #define HEX_SYMB_BUFFER "0123456789ABCDEFabcdef"
 #define HEX_BLOCK_SIZE 6
-#define BIN_BLOCK_SIZE ( HEX_BLOCK_SIZE * 4 )
+#define HEX_SIZE 4
+#define BIN_BLOCK_SIZE ( HEX_BLOCK_SIZE * HEX_SIZE )
 
 int main ( int argc, char const *argv[] )
 {

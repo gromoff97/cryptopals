@@ -4,13 +4,13 @@
 
 #define ARG_COUNT 2
 #define HEX_SYMB_BUFFER "0123456789ABCDEFabcdef"
-#define BLOCK_SIZE 6
+#define HEX_BLOCK_SIZE 6
 
 int main ( int argc, char const *argv[] )
 {
 	size_t char_counter, char_count, hex_block_count, hex_block_counter;
-	char hex_block[ BLOCK_SIZE + 1 ] = {0};
-	char bin_block[ ( BLOCK_SIZE * 4 ) + 1] = {0};
+	char hex_block[ HEX_BLOCK_SIZE + 1 ] = {0};
+	char bin_block[ ( HEX_BLOCK_SIZE * 4 ) + 1] = {0};
 	char* input_buffer;
 
 	if ( ARG_COUNT != argc ) return -1;
@@ -32,8 +32,8 @@ int main ( int argc, char const *argv[] )
 		char_count++;
 	}
 
-	hex_block_count = char_count / BLOCK_SIZE;
-	if ( 0 != ( char_count % BLOCK_SIZE ) )
+	hex_block_count = char_count / HEX_BLOCK_SIZE;
+	if ( 0 != ( char_count % HEX_BLOCK_SIZE ) )
 	{
 		hex_block_count++;
 	}
@@ -41,7 +41,7 @@ int main ( int argc, char const *argv[] )
 	/* from first block to n-1 block */
 	for ( hex_block_counter = 0; hex_block_counter < hex_block_count - 1; hex_block_counter++ )
 	{
-		strncpy( hex_block, input_buffer + ( hex_block_counter * BLOCK_SIZE ), BLOCK_SIZE );
+		strncpy( hex_block, input_buffer + ( hex_block_counter * HEX_BLOCK_SIZE ), HEX_BLOCK_SIZE );
 	}
 
 	free( input_buffer );

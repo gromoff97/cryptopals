@@ -4,6 +4,7 @@
 
 #define ARG_COUNT 2
 #define HEX_SYMB_BUFFER "0123456789ABCDEFabcdef"
+#define BASE64_SYMB_BUFFER "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
 #define HEX_BLOCK_SIZE 6
 #define OCT_BLOCK_SIZE 6
 #define HEX_SIZE 4

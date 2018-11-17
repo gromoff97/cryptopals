@@ -75,6 +75,11 @@ int main ( int argc, char const *argv[] )
 				default : printf("something is wrong with converter. Quiting\n"); return -2;
 			}
 		}
+
+		for ( oct_counter = 0; oct_counter < BIN_BLOCK_SIZE; oct_counter = oct_counter + OCT_BLOCK_SIZE )
+		{
+			strncpy( oct_block ,bin_block + oct_counter, OCT_BLOCK_SIZE );
+		}
 	}
 
 	free( input_buffer );

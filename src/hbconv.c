@@ -5,6 +5,7 @@
 #define ARG_COUNT 2
 #define HEX_SYMB_BUFFER "0123456789ABCDEFabcdef"
 #define HEX_BLOCK_SIZE 6
+#define OCT_BLOCK_SIZE 6
 #define HEX_SIZE 4
 #define BIN_BLOCK_SIZE ( HEX_BLOCK_SIZE * HEX_SIZE )
 

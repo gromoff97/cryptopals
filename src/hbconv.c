@@ -46,7 +46,32 @@ int main ( int argc, char const *argv[] )
 		strncpy( hex_block, input_buffer + ( hex_block_counter * HEX_BLOCK_SIZE ), HEX_BLOCK_SIZE );
 		for ( hex_counter = 0; hex_counter < HEX_BLOCK_SIZE; hex_counter++ )
 		{
-			/*code*/
+			switch( hex_block[hex_counter] )
+			{
+				case '0': strncpy( bin_block + hex_counter*HEX_SIZE, "0000", HEX_SIZE+1 ); break;
+				case '1': strncpy( bin_block + hex_counter*HEX_SIZE, "0001", HEX_SIZE+1 ); break;
+				case '2': strncpy( bin_block + hex_counter*HEX_SIZE, "0010", HEX_SIZE+1 ); break;
+				case '3': strncpy( bin_block + hex_counter*HEX_SIZE, "0011", HEX_SIZE+1 ); break;
+				case '4': strncpy( bin_block + hex_counter*HEX_SIZE, "0100", HEX_SIZE+1 ); break;
+				case '5': strncpy( bin_block + hex_counter*HEX_SIZE, "0101", HEX_SIZE+1 ); break;
+				case '6': strncpy( bin_block + hex_counter*HEX_SIZE, "0110", HEX_SIZE+1 ); break;
+				case '7': strncpy( bin_block + hex_counter*HEX_SIZE, "0111", HEX_SIZE+1 ); break;
+				case '8': strncpy( bin_block + hex_counter*HEX_SIZE, "1000", HEX_SIZE+1 ); break;
+				case '9': strncpy( bin_block + hex_counter*HEX_SIZE, "1001", HEX_SIZE+1 ); break;
+				case 'A': strncpy( bin_block + hex_counter*HEX_SIZE, "1010", HEX_SIZE+1 ); break;
+				case 'B': strncpy( bin_block + hex_counter*HEX_SIZE, "1011", HEX_SIZE+1 ); break;
+				case 'C': strncpy( bin_block + hex_counter*HEX_SIZE, "1100", HEX_SIZE+1 ); break;
+				case 'D': strncpy( bin_block + hex_counter*HEX_SIZE, "1101", HEX_SIZE+1 ); break;
+				case 'E': strncpy( bin_block + hex_counter*HEX_SIZE, "1110", HEX_SIZE+1 ); break;
+				case 'F': strncpy( bin_block + hex_counter*HEX_SIZE, "1111", HEX_SIZE+1 ); break;
+				case 'a': strncpy( bin_block + hex_counter*HEX_SIZE, "1010", HEX_SIZE+1 ); break;
+				case 'b': strncpy( bin_block + hex_counter*HEX_SIZE, "1011", HEX_SIZE+1 ); break;
+				case 'c': strncpy( bin_block + hex_counter*HEX_SIZE, "1100", HEX_SIZE+1 ); break;
+				case 'd': strncpy( bin_block + hex_counter*HEX_SIZE, "1101", HEX_SIZE+1 ); break;
+				case 'e': strncpy( bin_block + hex_counter*HEX_SIZE, "1110", HEX_SIZE+1 ); break;
+				case 'f': strncpy( bin_block + hex_counter*HEX_SIZE, "1111", HEX_SIZE+1 ); break;
+				default : printf("something is wrong with converter. Quiting\n"); return -2;
+			}
 		}
 	}
 

@@ -16,6 +16,7 @@ int main ( int argc, char const *argv[] )
 	char hex_block[ HEX_BLOCK_SIZE + 1 ] = {0};
 	char bin_block[ BIN_BLOCK_SIZE + 1] = {0};
 	char six_block[ SIX_BLOCK_SIZE + 1 ] = {0};
+	char* base64_buff = BASE64_SYMB_BUFFER;
 	char* input_buffer;
 
 	if ( ARG_COUNT != argc ) return -1;

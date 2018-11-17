@@ -85,6 +85,10 @@ int main ( int argc, char const *argv[] )
 		}
 	}
 
+	memset(hex_block, 0, HEX_BLOCK_SIZE);
+	strncpy( hex_block, input_buffer + hex_block_counter * HEX_BLOCK_SIZE , char_count % HEX_BLOCK_SIZE );
+	/*printf("\n%s\n",hex_block);*/
+
 	free( input_buffer );
 	return 0;
 }

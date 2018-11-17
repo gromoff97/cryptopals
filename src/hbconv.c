@@ -11,7 +11,7 @@
 
 int main ( int argc, char const *argv[] )
 {
-	size_t char_counter, char_count, hex_block_count, hex_block_counter, hex_counter;
+	size_t char_counter, char_count, hex_block_count, hex_block_counter, hex_counter, oct_counter;
 	char hex_block[ HEX_BLOCK_SIZE + 1 ] = {0};
 	char bin_block[ BIN_BLOCK_SIZE + 1] = {0};
 	char oct_block[ OCT_BLOCK_SIZE + 1 ] = {0};

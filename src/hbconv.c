@@ -44,10 +44,15 @@ int main ( int argc, char const *argv[] )
 		hex_block_count++;
 	}
 
-	if ( hex_block_count > 1 )
+	if ( hex_block_count > 1 || ( 1 == hex_block_count && 0 == ( char_count % HEX_BLOCK_SIZE ) ) )
 	{
+		if (hex_block_count > 1)
+		{
+			hex_block_count--;
+		}
+
 		/* from first block to n-1 block */
-		for ( hex_block_counter = 0; hex_block_counter < hex_block_count - 1; hex_block_counter++ )
+		for ( hex_block_counter = 0; hex_block_counter < hex_block_count; hex_block_counter++ )
 		{
 			strncpy( hex_block, input_buffer + ( hex_block_counter * HEX_BLOCK_SIZE ), HEX_BLOCK_SIZE );
 			for ( hex_counter = 0; hex_counter < HEX_BLOCK_SIZE; hex_counter++ )

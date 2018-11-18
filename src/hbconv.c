@@ -178,7 +178,7 @@ static int is_str_hex( const char* buffer )
 cl_read_status validate_arg( int argument_count, const char* input_buffer )
 {
 	if ( ARG_COUNT != argument_count ) return READ_INVALID_COUNT;
-	if ( 0 != is_str_hex( input_buffer ) )
+	if ( NULL == input_buffer || 0 != is_str_hex( input_buffer ) )
 		return READ_INVALID_INPUT;
 	return READ_OK;
 }

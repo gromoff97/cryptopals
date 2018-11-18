@@ -40,7 +40,7 @@ int main ( int argc, char const *argv[] )
 	/* from first block to n-1 block */
 	for ( block_counter = 0; block_counter < block_count - 1; block_counter++ )
 	{
-		strncpy( block, argv[1] + ( block_counter * BLOCK_SIZE ), BLOCK_SIZE );
+		strncpy( block, input_buffer + ( block_counter * BLOCK_SIZE ), BLOCK_SIZE );
 	}
 
 	free( input_buffer );

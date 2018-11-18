@@ -37,5 +37,6 @@ int main ( int argc, char const *argv[] )
 		strncpy( block, argv[1] + ( block_counter * BLOCK_SIZE ), BLOCK_SIZE );
 	}
 
+	free( input_buffer );
 	return 0;
 }

@@ -166,6 +166,14 @@ int main ( int argc, char const *argv[] )
 
 cl_read_status validate_arg( int argument_count, char const *argv[] )
 {
+	size_t char_count, char_counter;
+
 	if ( ARG_COUNT != argument_count ) return READ_INVALID_COUNT;
+
+	char_count = strlen( argv[1] );
+	for ( char_counter = 0 ; char_counter < char_count; char_counter++ )
+		if ( NULL == strchr( HEX_SYMB_BUFFER, argv[1][char_counter] ) )
+			return READ_INVALID_INPUT;
+
 	return READ_OK;
 }

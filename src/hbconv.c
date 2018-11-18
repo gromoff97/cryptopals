@@ -10,6 +10,12 @@
 #define HEX_SIZE 4
 #define BIN_BLOCK_SIZE ( HEX_BLOCK_SIZE * HEX_SIZE )
 
+typedef enum cl_read_status {
+	READ_OK = 0,
+	READ_INVALID_COUNT,
+	READ_INVALID_INPUT
+} cl_read_status;
+
 int main ( int argc, char const *argv[] )
 {
 	size_t char_counter, char_count, hex_block_count, hex_block_counter, hex_counter, six_counter;

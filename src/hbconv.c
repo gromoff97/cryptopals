@@ -20,24 +20,21 @@ cl_read_status validate_arg( int, const char* );
 
 int main ( int argc, char const *argv[] )
 {
-	size_t char_counter, char_count, hex_block_count, hex_block_counter, hex_counter, six_counter;
+	size_t char_count, hex_block_count, hex_block_counter, hex_counter, six_counter;
 	char hex_block[ HEX_BLOCK_SIZE + 1 ] = {0};
 	char bin_block[ BIN_BLOCK_SIZE + 1] = {0};
 	char six_block[ SIX_BLOCK_SIZE + 1 ] = {0};
 	char* base64_buff = BASE64_SYMB_BUFFER;
 	char* input_buffer;
 
-	if ( ARG_COUNT != argc ) return -1;
-
-	char_count = strlen(argv[1]);
-	for ( char_counter = 0 ; char_counter < char_count; char_counter++ )
+	switch( validate_arg( argc, argv[1] ) )
 	{
-		if ( NULL == strchr( HEX_SYMB_BUFFER, argv[1][char_counter] ) ) 
-		{
-			return -1;
-		}
+		case READ_INVALID_COUNT : fprintf( stderr, "hbconv : Argument count is invalid.\n" ); return -1;
+		case READ_INVALID_INPUT : fprintf( stderr, "hbconv : Input is invalid.\n" ); return -2;
+		case READ_OK : break;
 	}
 
+	char_count = strlen(argv[1]);
 	input_buffer = malloc( sizeof(char) * ( char_count  + ( char_count % 2 ) ) );
 	strncpy( input_buffer + ( char_count % 2 ), argv[1], char_count );
 	if ( 1 == ( char_count % 2 ) )

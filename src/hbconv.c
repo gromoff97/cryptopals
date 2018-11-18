@@ -162,3 +162,10 @@ int main ( int argc, char const *argv[] )
 	free( input_buffer );
 	return 0;
 }
+
+
+cl_read_status validate_arg( int argument_count, char const *argv[] )
+{
+	if ( ARG_COUNT != argument_count ) return READ_INVALID_COUNT;
+	return READ_OK;
+}

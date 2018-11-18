@@ -187,6 +187,10 @@ cl_read_status validate_arg( int argument_count, const char* input_buffer )
 
 static char* get_bin_from_hex( char hex_symbol )
 {
+	static char bin_code[5];
+
 	if ( NULL == strchr( HEX_SYMB_BUFFER, hex_symbol ) )
 		return NULL;
+
+	
 }

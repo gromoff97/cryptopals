@@ -223,4 +223,6 @@ static char* get_bin_from_hex( char hex_symbol )
 			fprintf( stderr, "hbconv : Error(UB) during converting from hex-code to binary code.\n" );
 			return NULL;
 	}
+
+	return bin_code;
 }

@@ -192,5 +192,35 @@ static char* get_bin_from_hex( char hex_symbol )
 	if ( NULL == strchr( HEX_SYMB_BUFFER, hex_symbol ) )
 		return NULL;
 
-	
+	switch( hex_symbol )
+	{
+		case '0': strcpy( bin_code,"0000" ); break;
+		case '1': strcpy( bin_code,"0001" ); break;
+		case '2': strcpy( bin_code,"0010" ); break;
+		case '3': strcpy( bin_code,"0011" ); break;
+		case '4': strcpy( bin_code,"0100" ); break;
+		case '5': strcpy( bin_code,"0101" ); break;
+		case '6': strcpy( bin_code,"0110" ); break;
+		case '7': strcpy( bin_code,"0111" ); break;
+		case '8': strcpy( bin_code,"1000" ); break;
+		case '9': strcpy( bin_code,"1001" ); break;
+
+		case 'A': strcpy( bin_code,"1010" ); break;
+		case 'B': strcpy( bin_code,"1011" ); break;
+		case 'C': strcpy( bin_code,"1100" ); break;
+		case 'D': strcpy( bin_code,"1101" ); break;
+		case 'E': strcpy( bin_code,"1110" ); break;
+		case 'F': strcpy( bin_code,"1111" ); break;
+
+		case 'a': strcpy( bin_code,"1010" ); break;
+		case 'b': strcpy( bin_code,"1011" ); break;
+		case 'c': strcpy( bin_code,"1100" ); break;
+		case 'd': strcpy( bin_code,"1101" ); break;
+		case 'e': strcpy( bin_code,"1110" ); break;
+		case 'f': strcpy( bin_code,"1111" ); break;
+
+		default :
+			fprintf( stderr, "hbconv : Error(UB) during converting from hex-code to binary code.\n" );
+			return NULL;
+	}
 }

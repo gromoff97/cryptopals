@@ -16,6 +16,7 @@ typedef enum cl_read_status {
 	READ_INVALID_INPUT
 } cl_read_status;
 
+static int is_str_hex( const char* );
 cl_read_status validate_arg( int, const char* );
 
 int main ( int argc, char const *argv[] )

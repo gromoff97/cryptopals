@@ -148,6 +148,13 @@ static char* get_bin_from_hex( char hex_symbol )
 	return bin_code;
 }
 
+static int is_str_bin( const char* buffer )
+{
+	if ( NULL == buffer ) return -1;
+	if ( 0 == buffer[strspn(buffer, "01") ] ) return 0;
+	return -2;
+}
+
 static char get_bchr_from_sextet( const char* sextet_buffer )
 {
 	static const char* base64_buffer = BASE64_SYMB_BUFFER;

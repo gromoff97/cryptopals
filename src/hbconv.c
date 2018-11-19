@@ -154,8 +154,8 @@ static int is_str_bin( const char* buffer )
 
 static char get_bchr_from_sextet( const char* sextet_buffer )
 {
-	static const char* base64_buffer = BASE64_SYMB_BUFFER;
-	static char tmp_buffer[SIX_BLOCK_SIZE + 1] = {0};
+	static const char* const base64_buffer = BASE64_SYMB_BUFFER;
+	char tmp_buffer[SIX_BLOCK_SIZE + 1] = {0};
 	size_t sextet_buffer_len;
 
 	if ( NULL == sextet_buffer ) return '*';

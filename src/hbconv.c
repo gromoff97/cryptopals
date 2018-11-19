@@ -152,7 +152,7 @@ static char* get_bin_from_hex( char hex_symbol )
 static int is_str_bin( const char* buffer )
 {
 	if ( NULL == buffer ) return -1;
-	if ( 0 == buffer[strspn(buffer, "01") ] ) return 0;
+	if ( 0 == buffer[ strspn( buffer, BIN_SYMB_BUFFER ) ] ) return 0;
 	return -2;
 }
 

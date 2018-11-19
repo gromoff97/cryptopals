@@ -31,6 +31,7 @@ int main ( int argc, char const *argv[] )
 	char bin_block[ BIN_BLOCK_SIZE + 1] = {0};
 	char six_block[ SIX_BLOCK_SIZE + 1 ] = {0};
 	char* input_buffer;
+	char* tmp_buffer;
 
 	switch( validate_arg( argc, argv[1] ) )
 	{
@@ -70,7 +71,9 @@ int main ( int argc, char const *argv[] )
 
 		for ( hex_counter = 0; hex_counter < hex_count; hex_counter++ )
 		{
-			strcpy( bin_block + hex_counter*HEX_SIZE, chrhextobin(hex_block[hex_counter]) );
+			tmp_buffer = chrhextobin( hex_block[hex_counter] );
+			strcpy( bin_block + hex_counter*HEX_SIZE, tmp_buffer );
+			free(tmp_buffer);
 		}
 
 		for ( six_counter = 0; six_counter < BIN_BLOCK_SIZE; six_counter = six_counter + SIX_BLOCK_SIZE )
@@ -104,7 +107,7 @@ cl_read_status validate_arg( int argument_count, const char* input_buffer )
 
 static char* chrhextobin( char hex_symbol )
 {
-	static char bin_code[5];
+	char* bin_code = malloc( sizeof(char) * ( HEX_SIZE + 1 ) );
 
 	if ( NULL == strchr( HEX_SYMB_BUFFER, hex_symbol ) )
 		return NULL;

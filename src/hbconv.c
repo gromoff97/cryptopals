@@ -89,8 +89,9 @@ int main ( int argc, char const *argv[] )
 static int is_str_hex( const char* buffer )
 {
 	if ( NULL == buffer ) return -1;
+	if ( 0 == strlen( buffer ) ) return -2;
 	if ( 0 == buffer[ strspn( buffer, HEX_SYMB_BUFFER ) ] ) return 0;
-	return -2;
+	return -3;
 }
 
 cl_read_status validate_arg( int argument_count, const char* input_buffer )
@@ -146,8 +147,9 @@ static char* get_bin_from_hex( char hex_symbol )
 static int is_str_bin( const char* buffer )
 {
 	if ( NULL == buffer ) return -1;
+	if ( 0 == strlen( buffer ) ) return -2;
 	if ( 0 == buffer[ strspn( buffer, BIN_SYMB_BUFFER ) ] ) return 0;
-	return -2;
+	return -3;
 }
 
 static char get_bchr_from_sextet( const char* sextet_buffer )

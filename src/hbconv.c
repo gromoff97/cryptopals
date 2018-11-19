@@ -20,6 +20,7 @@ static int is_str_hex( const char* );
 cl_read_status validate_arg( int, const char* );
 
 static char* get_bin_from_hex( char );
+static int is_str_bin( const char* );
 static char get_bchr_from_sextet( const char* );
 
 int main ( int argc, char const *argv[] )

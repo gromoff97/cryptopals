@@ -160,8 +160,8 @@ static char get_bchr_from_sextet( const char* sextet_buffer )
 
 	sextet_buffer_len = strlen( sextet_buffer );
 	if ( sextet_buffer_len > 6 ) return '*';
-
 	if ( 0 == sextet_buffer_len ) return '=';
+	if ( 0 != is_str_bin(sextet_buffer) ) return '*';
 
 	strcpy( tmp_buffer, sextet_buffer );
 	if ( SIX_BLOCK_SIZE != sextet_buffer_len )

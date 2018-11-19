@@ -88,15 +88,9 @@ int main ( int argc, char const *argv[] )
 
 static int is_str_hex( const char* buffer )
 {
-	size_t char_count, char_counter; 
 	if ( NULL == buffer ) return -1;
-
-	char_count = strlen( buffer );
-	for ( char_counter = 0 ; char_counter < char_count; char_counter++ )
-		if ( NULL == strchr( HEX_SYMB_BUFFER, buffer[char_counter] ) )
-			return -2;
-
-	return 0;
+	if ( 0 == buffer[ strspn( buffer, HEX_SYMB_BUFFER ) ] ) return 0;
+	return -2;
 }
 
 cl_read_status validate_arg( int argument_count, const char* input_buffer )

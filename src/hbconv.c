@@ -53,46 +53,28 @@ int main ( int argc, char const *argv[] )
 		hex_block_count++;
 	}
 
-	if ( hex_block_count > 1 || ( 1 == hex_block_count && 0 == chars_left_count ) )
+	for ( hex_block_counter = 0; hex_block_counter < hex_block_count; hex_block_counter++ )
 	{
-		if ( hex_block_count > 1 && 0 != chars_left_count )
+		strncpy( hex_block, input_buffer + ( hex_block_counter * HEX_BLOCK_SIZE ), HEX_BLOCK_SIZE );
+
+		if ( hex_block_counter == ( hex_block_count - 1 ) && chars_left_count != 0 )
 		{
-			hex_block_count--;
+			hex_count = chars_left_count;
+			memset(bin_block, 0, sizeof(char) * BIN_BLOCK_SIZE);
+		}
+		else
+			hex_count = HEX_BLOCK_SIZE;
+
+		for ( hex_counter = 0; hex_counter < hex_count; hex_counter++ )
+		{
+			strcpy( bin_block + hex_counter*HEX_SIZE, get_bin_from_hex(hex_block[hex_counter]) );
 		}
 
-		/* from first block to n-1 block */
-		for ( hex_block_counter = 0; hex_block_counter < hex_block_count; hex_block_counter++ )
+		for ( six_counter = 0; six_counter < BIN_BLOCK_SIZE; six_counter = six_counter + SIX_BLOCK_SIZE )
 		{
-			strncpy( hex_block, input_buffer + ( hex_block_counter * HEX_BLOCK_SIZE ), HEX_BLOCK_SIZE );
-			for ( hex_counter = 0; hex_counter < HEX_BLOCK_SIZE; hex_counter++ )
-			{
-				strcpy( bin_block + hex_counter*HEX_SIZE, get_bin_from_hex(hex_block[hex_counter]) );
-			}
-
-			for ( six_counter = 0; six_counter < BIN_BLOCK_SIZE; six_counter = six_counter + SIX_BLOCK_SIZE )
-			{
-				strncpy( six_block, bin_block + six_counter, SIX_BLOCK_SIZE );
-				printf("%c", get_bchr_from_sextet(six_block));
-			}
+			strncpy( six_block, bin_block + six_counter, SIX_BLOCK_SIZE );
+			printf("%c", get_bchr_from_sextet(six_block));
 		}
-	}
-
-	memset(hex_block, 0, sizeof(char) * HEX_BLOCK_SIZE);
-	memset(bin_block, 0, sizeof(char) * BIN_BLOCK_SIZE);
-	strncpy( hex_block, input_buffer + hex_block_counter * HEX_BLOCK_SIZE , chars_left_count );
-
-	if ( 0 != strlen(hex_block) )
-	{
-		for ( hex_counter = 0; hex_counter < chars_left_count; hex_counter++ )
-			{
-				strcpy( bin_block + hex_counter*HEX_SIZE, get_bin_from_hex(hex_block[hex_counter]) );
-			}
-
-			for ( six_counter = 0; six_counter < BIN_BLOCK_SIZE; six_counter = six_counter + SIX_BLOCK_SIZE )
-			{
-				strncpy( six_block, bin_block + six_counter, SIX_BLOCK_SIZE );
-				printf("%c", get_bchr_from_sextet(six_block));
-			}
 	}
 	puts("");
 

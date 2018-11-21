@@ -181,10 +181,27 @@ static char* strhextobin( const char* buffer )
 {
 	size_t char_count, char_counter;
 	char* bin_buffer;
+	char* tmp_buffer;
 	if ( NULL == buffer ) return NULL;
 	char_count = strlen( buffer );
 	if ( 0 == char_count ) return NULL;
 	if ( 0 != is_str_hex( buffer ) ) return NULL;
-	/*main code will be here*/
+
+	bin_buffer = malloc( sizeof(char) * ( ( HEX_SIZE * char_count ) + 1 ) );
+	if ( NULL == bin_buffer ) return NULL;
+
+	for ( char_counter = 0; char_counter < char_count; char_counter++ )
+	{
+		tmp_buffer = chrhextobin( buffer[char_counter] );
+		if ( NULL == tmp_buffer )
+		{
+			free(bin_buffer);
+			return NULL;
+		}
+
+		strcpy( bin_buffer + ( HEX_SIZE * char_counter ), tmp_buffer );
+		free(tmp_buffer);
+	}
+
 	return bin_buffer;
 }

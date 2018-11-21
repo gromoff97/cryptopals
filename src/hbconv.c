@@ -176,3 +176,15 @@ static char get_bchr_from_sextet( const char* sextet_buffer )
 
 	return base64_buffer[strtoul( tmp_buffer, NULL, 2 )];
 }
+
+static char* strhextobin( const char* buffer )
+{
+	size_t char_count, char_counter;
+	char* bin_buffer;
+	if ( NULL == buffer ) return NULL;
+	char_count = strlen( buffer );
+	if ( 0 == char_count ) return NULL;
+	if ( 0 != is_str_hex( buffer ) ) return NULL;
+	/*main code will be here*/
+	return bin_buffer;
+}

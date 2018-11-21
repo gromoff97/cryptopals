@@ -23,7 +23,7 @@ static char* get_bin_from_hex( char );
 
 int main ( int argc, char const *argv[] )
 {
-	size_t char_count, hex_block_count, hex_block_counter, hex_counter, six_counter;
+	size_t char_count, hex_block_count, hex_block_counter, hex_counter, six_counter, chars_left_count;
 	char hex_block[ HEX_BLOCK_SIZE + 1 ] = {0};
 	char bin_block[ BIN_BLOCK_SIZE + 1] = {0};
 	char six_block[ SIX_BLOCK_SIZE + 1 ] = {0};

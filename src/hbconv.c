@@ -160,7 +160,7 @@ static int is_str_bin( const char* buffer )
 
 static char get_bchr_from_sextet( const char* sextet_buffer )
 {
-	static const char base64_buffer[] = BASE64_SYMB_BUFFER;
+	static const char base64_symb_buffer[] = BASE64_SYMB_BUFFER;
 	char tmp_buffer[SIX_BLOCK_SIZE + 1] = {0};
 	size_t sextet_buffer_len;
 
@@ -175,7 +175,7 @@ static char get_bchr_from_sextet( const char* sextet_buffer )
 	if ( SIX_BLOCK_SIZE != sextet_buffer_len )
 		memset( tmp_buffer + sextet_buffer_len, '0', sizeof(char) * ( SIX_BLOCK_SIZE - sextet_buffer_len ) );
 
-	return base64_buffer[strtoul( tmp_buffer, NULL, 2 )];
+	return base64_symb_buffer[strtoul( tmp_buffer, NULL, 2 )];
 }
 
 static char* strhextobin( const char* buffer )

@@ -25,6 +25,7 @@ static int is_str_bin( const char* );
 static char get_bchr_from_sextet( const char* );
 
 static char* strhextobin( const char* );
+static char* strbintobase64( const char* );
 
 int main ( int argc, char const *argv[] )
 {

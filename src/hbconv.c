@@ -24,6 +24,8 @@ static char* chrhextobin( char );
 static int is_str_bin( const char* );
 static char get_bchr_from_sextet( const char* );
 
+static char* strhextobin( const char* );
+
 int main ( int argc, char const *argv[] )
 {
 	size_t char_count, hex_block_count, hex_block_counter, hex_counter, hex_count, six_counter, chars_left_count, odd_flag;

@@ -73,7 +73,7 @@ int main ( int argc, char const *argv[] )
 			for ( six_counter = 0; six_counter < BIN_BLOCK_SIZE; six_counter = six_counter + SIX_BLOCK_SIZE )
 			{
 				strncpy( six_block, bin_block + six_counter, SIX_BLOCK_SIZE );
-				printf("%c", base64_buff[strtoul( six_block, NULL, 2 )]);
+				printf("%c", get_bchr_from_sextet(six_block));
 			}
 		}
 	}
@@ -92,21 +92,7 @@ int main ( int argc, char const *argv[] )
 			for ( six_counter = 0; six_counter < BIN_BLOCK_SIZE; six_counter = six_counter + SIX_BLOCK_SIZE )
 			{
 				strncpy( six_block, bin_block + six_counter, SIX_BLOCK_SIZE );
-				if ( SIX_BLOCK_SIZE == strlen(six_block) )
-				{
-					printf("%c", base64_buff[strtoul( six_block, NULL, 2 )]);
-				}
-
-				if ( strlen(six_block) != SIX_BLOCK_SIZE && strlen(six_block) > 0 )
-				{
-					memset(six_block + strlen(six_block), '0', sizeof(char) * ( SIX_BLOCK_SIZE - strlen(six_block)) );
-					printf("%c", base64_buff[strtoul( six_block, NULL, 2 )]);
-				}
-
-				if ( 0 == strlen(six_block) )
-				{
-					printf("=");
-				}
+				printf("%c", get_bchr_from_sextet(six_block));
 			}
 	}
 	puts("");

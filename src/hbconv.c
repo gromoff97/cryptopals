@@ -24,7 +24,7 @@ static char get_bchr_from_sextet( const char* );
 
 int main ( int argc, char const *argv[] )
 {
-	size_t char_count, hex_block_count, hex_block_counter, hex_counter, hex_count, six_counter, chars_left_count;
+	size_t char_count, hex_block_count, hex_block_counter, hex_counter, hex_count, six_counter, chars_left_count, odd_flag;
 	char hex_block[ HEX_BLOCK_SIZE + 1 ] = {0};
 	char bin_block[ BIN_BLOCK_SIZE + 1] = {0};
 	char six_block[ SIX_BLOCK_SIZE + 1 ] = {0};

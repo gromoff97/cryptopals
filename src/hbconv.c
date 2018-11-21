@@ -38,9 +38,10 @@ int main ( int argc, char const *argv[] )
 	}
 
 	char_count = strlen(argv[1]);
-	input_buffer = malloc( sizeof(char) * ( char_count  + ( char_count % 2 ) ) );
-	strncpy( input_buffer + ( char_count % 2 ), argv[1], char_count );
-	if ( 1 == ( char_count % 2 ) )
+	odd_flag = char_count % 2;
+	input_buffer = malloc( sizeof(char) * ( char_count  + odd_flag ) );
+	strncpy( input_buffer + odd_flag, argv[1], char_count );
+	if ( 1 == odd_flag )
 	{
 		input_buffer[0] = '0';
 		char_count++;

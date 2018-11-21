@@ -207,9 +207,11 @@ static char* strhextobin( const char* buffer )
 	return bin_buffer;
 }
 
+/* TO DO : need to finish */
 static char* strbintobase64( const char* buffer )
 {
 	size_t char_count, chars_left_count;
+	char* new_buffer;
 	if ( NULL == buffer ) return NULL;
 	char_count = strlen( buffer );
 	if ( 0 == char_count ) return NULL;
@@ -220,5 +222,13 @@ static char* strbintobase64( const char* buffer )
 	/* count of hex must not be uneven. "1010 1110" will be "0000 1010 1110" */
 	chars_left_count += ( ( ( chars_left_count + char_count ) / HEX_SIZE ) % 2 ) * HEX_SIZE;
 	/* as a result, for example, "110" will become "0000 0110" */
+
+	/* updating char_count */
+	char_count = char_count + chars_left_count;
+	new_buffer = malloc( sizeof(char) * ( char_count + 1 ) );
+	memset( new_buffer, '0', chars_left_count );
+	strcpy( new_buffer + chars_left_count, buffer );
+	/* main code will be here */
+	free(new_buffer);
 	return NULL;
 }

@@ -206,3 +206,19 @@ static char* strhextobin( const char* buffer )
 
 	return bin_buffer;
 }
+
+static char* strbintobase64( const char* buffer )
+{
+	size_t char_count, chars_left_count;
+	if ( NULL == buffer ) return NULL;
+	char_count = strlen( buffer );
+	if ( 0 == char_count ) return NULL;
+	if ( 0 != is_str_bin( buffer ) ) return NULL;
+
+	/* 1 hex - 4 bits. For example, "101" will be "0101" */
+	chars_left_count = HEX_SIZE - ( char_count % HEX_SIZE );
+	/* count of hex must not be uneven. "1010 1110" will be "0000 1010 1110" */
+	chars_left_count += ( ( ( chars_left_count + char_count ) / HEX_SIZE ) % 2 ) * HEX_SIZE;
+	/* as a result, for example, "110" will become "0000 0110" */
+	return NULL;
+}

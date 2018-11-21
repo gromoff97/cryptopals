@@ -178,3 +178,21 @@ static char* get_bin_from_hex( char hex_symbol )
 
 	return bin_code;
 }
+
+static char get_bchr_from_sextet( const char* sextet_buffer )
+{
+	static const char* base64_buffer = BASE64_SYMB_BUFFER;
+	size_t sextet_buffer_len = strlen( sextet_buffer );
+	static char tmp_buffer[SIX_BLOCK_SIZE + 1] = {0};
+
+	if ( NULL == sextet_buffer || sextet_buffer_len > 6 )
+		return '*';
+
+	if ( 0 == sextet_buffer_len ) return '=';
+
+	strcpy( tmp_buffer, sextet_buffer );
+	if ( SIX_BLOCK_SIZE != sextet_buffer_len )
+		memset( tmp_buffer + sextet_buffer_len, '0', sizeof(char) * ( SIX_BLOCK_SIZE - sextet_buffer_len ) );
+
+	return base64_buffer[strtoul( tmp_buffer, NULL, 2 )];
+}

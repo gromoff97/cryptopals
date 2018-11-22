@@ -25,7 +25,7 @@ static int is_str_bin( const char* );
 static char get_bchr_from_sextet( const char* );
 
 static char* strhextobin( const char* );
-static char* strbinblocktobase64( const char *);
+static char* strbinblocktobase64( const char* );
 static char* strbintobase64( const char* );
 
 int main ( int argc, char const *argv[] )
@@ -206,6 +206,18 @@ static char* strhextobin( const char* buffer )
 	}
 
 	return bin_buffer;
+}
+
+static char* strbinblocktobase64( const char* block_buffer )
+{
+	size_t char_count;
+	char* base64_block = NULL;
+	if ( NULL == block_buffer ) return NULL;
+	char_count = strlen( block_buffer );
+	if ( 0 == char_count || char_count < 8 || char_count > BIN_BLOCK_SIZE ) return NULL;
+	if ( 0 != is_str_bin( block_buffer ) ) return NULL;
+
+	return base64_block;
 }
 
 /* TO DO : need to finish */

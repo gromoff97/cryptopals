@@ -28,6 +28,8 @@ static char* strhextobin( const char* );
 static char* strbinblocktobase64( const char* );
 static char* strbintobase64( const char* );
 
+char* convhextobase64( const char* );
+
 int main ( int argc, char const *argv[] )
 {
 	char* bin_buffer;

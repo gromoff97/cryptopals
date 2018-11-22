@@ -32,7 +32,6 @@ char* convhextobase64( const char* );
 
 int main ( int argc, char const *argv[] )
 {
-	char* bin_buffer;
 	char* base64_buffer;
 
 	switch( validate_arg( argc, argv[1] ) )
@@ -42,14 +41,10 @@ int main ( int argc, char const *argv[] )
 		case READ_OK : break;
 	}
 
-	bin_buffer = strhextobin(argv[1]);
-	base64_buffer = strbintobase64(bin_buffer);
-
+	base64_buffer = convhextobase64(argv[1]);
 	puts(base64_buffer);
 
 	free(base64_buffer);
-	free(bin_buffer);
-
 	return 0;
 }
 

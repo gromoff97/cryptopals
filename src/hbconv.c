@@ -231,18 +231,24 @@ static char* strbinblocktobase64( const char* block_buffer )
 	return base64_block;
 }
 
-/* TO DO : need to finish */
+/* TODO : working, but still need to work on it */
 static char* strbintobase64( const char* buffer )
 {
-	size_t char_count, chars_left_count;
+	size_t char_count, chars_left_count, char_counter, blocks_count;
 	char* new_buffer;
+	char* tmp_buffer;
+	char* base64_buffer;
+	char bin_block_buffer[BIN_BLOCK_SIZE+1];
 	if ( NULL == buffer ) return NULL;
 	char_count = strlen( buffer );
 	if ( 0 == char_count ) return NULL;
 	if ( 0 != is_str_bin( buffer ) ) return NULL;
 
 	/* 1 hex - 4 bits. For example, "101" will be "0101" */
-	chars_left_count = HEX_SIZE - ( char_count % HEX_SIZE );
+	if ( 0 == ( char_count % HEX_SIZE ) )
+		chars_left_count = 0;
+	else
+		chars_left_count = HEX_SIZE - ( char_count % HEX_SIZE );
 	/* count of hex must not be uneven. "1010 1110" will be "0000 1010 1110" */
 	chars_left_count += ( ( ( chars_left_count + char_count ) / HEX_SIZE ) % 2 ) * HEX_SIZE;
 	/* as a result, for example, "110" will become "0000 0110" */
@@ -250,9 +256,29 @@ static char* strbintobase64( const char* buffer )
 	/* updating char_count */
 	char_count = char_count + chars_left_count;
 	new_buffer = malloc( sizeof(char) * ( char_count + 1 ) );
+	if ( NULL == new_buffer ) return NULL;
 	memset( new_buffer, '0', chars_left_count );
 	strcpy( new_buffer + chars_left_count, buffer );
-	/* main code will be here */
+
+	blocks_count = ( char_count / BIN_BLOCK_SIZE );
+	if ( 0 != ( char_count % BIN_BLOCK_SIZE ) )
+		blocks_count++;
+
+	base64_buffer = malloc( sizeof(char) * ( BIN_BLOCK_SIZE / SIX_BLOCK_SIZE ) * blocks_count );
+	for ( char_counter = 0; char_counter < char_count; char_counter += BIN_BLOCK_SIZE )
+	{
+		memset( bin_block_buffer , 0, sizeof(bin_block_buffer) );
+
+		/* if it's last block*/
+		if ( ( char_counter + BIN_BLOCK_SIZE ) > char_count )
+			strncpy( bin_block_buffer, new_buffer + char_counter, char_count - char_counter );
+		else
+			strncpy( bin_block_buffer, new_buffer + char_counter, BIN_BLOCK_SIZE );
+
+		tmp_buffer = strbinblocktobase64(bin_block_buffer);
+		strcpy(base64_buffer + (char_counter / SIX_BLOCK_SIZE), tmp_buffer);
+		free(tmp_buffer);
+	}
 	free(new_buffer);
-	return NULL;
+	return base64_buffer;
 }

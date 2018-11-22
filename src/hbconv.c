@@ -30,12 +30,8 @@ static char* strbintobase64( const char* );
 
 int main ( int argc, char const *argv[] )
 {
-	size_t char_count, hex_block_count, hex_block_counter, hex_counter, hex_count, six_counter, chars_left_count, odd_flag;
-	char hex_block[ HEX_BLOCK_SIZE + 1 ] = {0};
-	char bin_block[ BIN_BLOCK_SIZE + 1] = {0};
-	char six_block[ SIX_BLOCK_SIZE + 1 ] = {0};
-	char* input_buffer;
-	char* tmp_buffer;
+	char* bin_buffer;
+	char* base64_buffer;
 
 	switch( validate_arg( argc, argv[1] ) )
 	{
@@ -44,51 +40,14 @@ int main ( int argc, char const *argv[] )
 		case READ_OK : break;
 	}
 
-	char_count = strlen(argv[1]);
-	odd_flag = char_count % 2;
-	input_buffer = malloc( sizeof(char) * ( char_count  + odd_flag ) );
-	strncpy( input_buffer + odd_flag, argv[1], char_count );
-	if ( 1 == odd_flag )
-	{
-		input_buffer[0] = '0';
-		char_count++;
-	}
+	bin_buffer = strhextobin(argv[1]);
+	base64_buffer = strbintobase64(bin_buffer);
 
-	hex_block_count = char_count / HEX_BLOCK_SIZE;
-	chars_left_count = char_count % HEX_BLOCK_SIZE;
-	if ( 0 != chars_left_count )
-	{
-		hex_block_count++;
-	}
+	puts(base64_buffer);
 
-	for ( hex_block_counter = 0; hex_block_counter < hex_block_count; hex_block_counter++ )
-	{
-		strncpy( hex_block, input_buffer + ( hex_block_counter * HEX_BLOCK_SIZE ), HEX_BLOCK_SIZE );
+	free(base64_buffer);
+	free(bin_buffer);
 
-		if ( hex_block_counter == ( hex_block_count - 1 ) && chars_left_count != 0 )
-		{
-			hex_count = chars_left_count;
-			memset(bin_block, 0, sizeof(char) * BIN_BLOCK_SIZE);
-		}
-		else
-			hex_count = HEX_BLOCK_SIZE;
-
-		for ( hex_counter = 0; hex_counter < hex_count; hex_counter++ )
-		{
-			tmp_buffer = chrhextobin( hex_block[hex_counter] );
-			strcpy( bin_block + hex_counter*HEX_SIZE, tmp_buffer );
-			free(tmp_buffer);
-		}
-
-		for ( six_counter = 0; six_counter < BIN_BLOCK_SIZE; six_counter = six_counter + SIX_BLOCK_SIZE )
-		{
-			strncpy( six_block, bin_block + six_counter, SIX_BLOCK_SIZE );
-			printf("%c", get_bchr_from_sextet(six_block));
-		}
-	}
-	puts("");
-
-	free( input_buffer );
 	return 0;
 }
 

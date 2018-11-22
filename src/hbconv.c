@@ -210,12 +210,23 @@ static char* strhextobin( const char* buffer )
 
 static char* strbinblocktobase64( const char* block_buffer )
 {
-	size_t char_count;
-	char* base64_block = NULL;
+	size_t sextet_counter, char_count;
+	char sextet_buffer[SIX_BLOCK_SIZE+1];
+	char new_block_buffer[BIN_BLOCK_SIZE + 1] = {0};
+	char* base64_block;
 	if ( NULL == block_buffer ) return NULL;
 	char_count = strlen( block_buffer );
 	if ( 0 == char_count || char_count < 8 || char_count > BIN_BLOCK_SIZE ) return NULL;
 	if ( 0 != is_str_bin( block_buffer ) ) return NULL;
+
+	strncpy(new_block_buffer, block_buffer, char_count);
+	base64_block = malloc( sizeof(char) * 4 );
+	if ( NULL == base64_block ) return NULL;
+	for ( sextet_counter = 0; sextet_counter < 4; sextet_counter++ )
+	{
+		strncpy(sextet_buffer,&new_block_buffer[sextet_counter * SIX_BLOCK_SIZE], SIX_BLOCK_SIZE);
+		base64_block[sextet_counter] = get_bchr_from_sextet(sextet_buffer);
+	}
 
 	return base64_block;
 }

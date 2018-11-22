@@ -243,3 +243,18 @@ static char* strbintobase64( const char* buffer )
 	free(new_buffer);
 	return base64_buffer;
 }
+
+char* convhextobase64( const char* input_buffer )
+{
+	char* bin_buffer;
+	char* base64_buffer;
+
+	if ( NULL == input_buffer ) return NULL;
+	if ( 0 == strlen(input_buffer) ) return NULL;
+
+	bin_buffer = strhextobin(input_buffer);
+	base64_buffer = strbintobase64(bin_buffer);
+
+	free(bin_buffer);
+	return base64_buffer;
+}

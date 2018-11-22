@@ -2,23 +2,9 @@
 #include <string.h>
 #include <stdlib.h>
 
-#define ARG_COUNT 2
-#define HEX_SYMB_BUFFER "0123456789ABCDEFabcdef"
-#define BIN_SYMB_BUFFER "01"
-#define BASE64_SYMB_BUFFER "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/"
-#define HEX_BLOCK_SIZE 6
-#define SIX_BLOCK_SIZE 6
-#define HEX_SIZE 4
-#define BIN_BLOCK_SIZE ( HEX_BLOCK_SIZE * HEX_SIZE )
-
-typedef enum cl_read_status {
-	READ_OK = 0,
-	READ_INVALID_COUNT,
-	READ_INVALID_INPUT
-} cl_read_status;
+#include "../include/hbconv.h"
 
 static int is_str_hex( const char* );
-cl_read_status validate_arg( int, const char* );
 
 static char* chrhextobin( char );
 static int is_str_bin( const char* );
@@ -27,8 +13,6 @@ static char get_bchr_from_sextet( const char* );
 static char* strhextobin( const char* );
 static char* strbinblocktobase64( const char* );
 static char* strbintobase64( const char* );
-
-char* convhextobase64( const char* );
 
 int main ( int argc, char const *argv[] )
 {

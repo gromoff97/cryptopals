@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-#include "../include/hbconv.h"
+#include "../../include/hbconv.h"
 
 static int is_str_hex( const char* );
 

@@ -3,5 +3,5 @@ CFLAGS=-ansi -Werror -Wall -pedantic
 SDIR=src
 BDIR=build
 
-hbconv: $(SDIR)/hbconv.c
+hbconv: $(SDIR)/hbconv/hbconv.c
 	$(CC) $(CFLAGS) -o $(BDIR)/$@ $<

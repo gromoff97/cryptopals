@@ -1,5 +1,5 @@
 #include <hbconv.h>
-#include <assert.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
@@ -42,11 +42,26 @@ int main ( void )
 	size_t string_counter = 0;
 	size_t string_count = sizeof(test_data) / sizeof(*test_data);
 	char* tmp_buffer = NULL;
+	int compr_res;
 
 	while ( string_counter < string_count )
 	{
 		tmp_buffer = convhextobase64( test_data[string_counter] );
-		assert( 0 == strcmp( tmp_buffer, test_data_answers[string_counter] ) );
+		if ( NULL == tmp_buffer )
+		{
+			fprintf( stderr, "allocating led to NULL. Quiting\n" );
+			return -1;
+		}
+
+		compr_res = strcmp( tmp_buffer, test_data_answers[string_counter] );
+
+		if ( 0 != compr_res )
+		{
+			fprintf( stderr, "line № %lu failed : %s IS NOT %s. Quiting\n", string_counter + 1, tmp_buffer, test_data_answers[string_counter] );
+			free(tmp_buffer);
+			return string_counter;
+		}
+
 		free(tmp_buffer);
 		string_counter++;
 	}

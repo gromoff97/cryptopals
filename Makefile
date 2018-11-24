@@ -6,3 +6,6 @@ BDIR=build
 
 hbconv: $(SDIR)/hbconv/*.c
 	$(CC) $(CFLAGS) -o $(BDIR)/$@ $^
+
+hbconv_tt: $(SDIR)/$(TDIR)/*.c
+	$(CC) $(CFLAGS) -o $(BDIR)/$(TDIR)/$@ $^

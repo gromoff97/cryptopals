@@ -6,8 +6,8 @@ BDIR=build
 
 all: hbconv hbconv_tt
 
-hbconv: $(SDIR)/hbconv/*.c
+hbconv: $(SDIR)/hbconv/core.c $(SDIR)/hbconv/hbconv.c
 	$(CC) $(CFLAGS) -o $(BDIR)/$@ $^
 
-hbconv_tt: $(SDIR)/$(TDIR)/*.c
+hbconv_tt: $(SDIR)/hbconv/core.c $(SDIR)/$(TDIR)/hbconv_tt.c
 	$(CC) $(CFLAGS) -o $(BDIR)/$(TDIR)/$@ $^

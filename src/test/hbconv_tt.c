@@ -45,7 +45,9 @@ int main ( void )
 
 	while ( string_counter < string_count )
 	{
-		/* assertions will be here */
+		tmp_buffer = convhextobase64( test_data[string_counter] );
+		assert( 0 == strcmp( tmp_buffer, test_data_answers[string_counter] ) );
+		free(tmp_buffer);
 		string_counter++;
 	}
 

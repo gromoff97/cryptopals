@@ -41,6 +41,7 @@ int main ( void )
 
 	size_t string_counter = 0;
 	size_t string_count = sizeof(test_data) / sizeof(*test_data);
+	char* tmp_buffer = NULL;
 
 	while ( string_counter < string_count )
 	{

@@ -10,5 +10,8 @@ int main ( void )
 		{"0"},
 	};
 
+	size_t string_counter = 0;
+	size_t string_count = sizeof(test_data) / sizeof(*test_data);
+
 	return 0;
 }

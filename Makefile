@@ -4,6 +4,8 @@ SDIR=src
 TDIR=test
 BDIR=build
 
+all: hbconv hbconv_tt
+
 hbconv: $(SDIR)/hbconv/*.c
 	$(CC) $(CFLAGS) -o $(BDIR)/$@ $^
 

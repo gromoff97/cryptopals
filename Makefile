@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-Iinclude -ansi -Werror -Wall -pedantic
+CFLAGS=-Iinclude -ansi -Werror -Wall -pedantic -g
 SDIR=src
 TDIR=test
 BDIR=build
